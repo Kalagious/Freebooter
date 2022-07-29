@@ -1,5 +1,6 @@
 #pragma once
 #include "hookmanager.h"
+#include "screenmanager.h"
 #include "allmodules.h"
 #include "module.h"
 #include "allclasses.h"
@@ -25,6 +26,7 @@ public:
 	std::vector<Module*> modules;
 
 	HookManager* hookManager;
+	ScreenManager* screenManager;
 	RoguePython* roguePython;
 
 	Fly* fly;

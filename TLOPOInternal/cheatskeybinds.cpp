@@ -20,8 +20,8 @@ void Cheats::keybinds()
 	}
 
 
-
-
+	if (GetAsyncKeyState(VK_NUMPAD0) & 0x01)
+		screenManager->bShowGUI = !screenManager->bShowGUI;
 	if (GetAsyncKeyState(VK_NUMPAD4) & 0x01)
 		fly->enable = !fly->enable;
 	if (GetAsyncKeyState(VK_NUMPAD5) & 0x01)

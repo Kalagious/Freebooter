@@ -14,6 +14,7 @@ Cheats::Cheats()
 
 	roguePython = new RoguePython(this);
 	hookManager = new HookManager(tlopoExe, openGl32);
+	screenManager = new ScreenManager();
 
 
 
@@ -55,5 +56,6 @@ void Cheats::cleanup()
 {
 	printf(" [*] Exiting!\n");
 	hookManager->removeAll();
-	Sleep(100);
+	screenManager->cleanUp();
+	Sleep(200);
 }

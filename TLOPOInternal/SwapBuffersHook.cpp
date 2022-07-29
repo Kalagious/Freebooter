@@ -12,12 +12,15 @@ extern Cheats* cheatsGlobal;
 SwapBuffersHook::tTargetPtr SwapBuffersHook::oFunction;
 
 
-int64_t __fastcall SwapBuffersHook::hookFunction(int64_t a1)
+bool __fastcall SwapBuffersHook::hookFunction(HDC hDc)
 {
+	if (!cheatsGlobal->screenManager->imGUIInitialized)
+		cheatsGlobal->screenManager->initializeImGui(hDc);
 
-	return SwapBuffersHook::oFunction(a1);
+	cheatsGlobal->screenManager->drawGUI();
+	
+	return SwapBuffersHook::oFunction(hDc);
 }
-
 
 SwapBuffersHook::SwapBuffersHook(void* moduleBaseIn)
 {
@@ -34,10 +37,10 @@ SwapBuffersHook::SwapBuffersHook(void* moduleBaseIn)
 
 bool SwapBuffersHook::initialize()
 {
-	targetAddr = signatureScan(viSig, iSigOffset, moduleBase);
-	if (!targetAddr)
-		return false;
-
+	//targetAddr = signatureScan(viSig, iSigOffset, moduleBase);
+	//if (!targetAddr)
+	//	return false;
+	targetAddr = (void*)((uint64_t)moduleBase + 0x43200);
 	SwapBuffersHook::oFunction = (tTargetPtr)(targetAddr);
 
 	SwapBuffersHook::oFunction = (tTargetPtr)DetourFunction64((void*)SwapBuffersHook::oFunction, (void*)SwapBuffersHook::hookFunction, hookLen);

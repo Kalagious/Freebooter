@@ -51,6 +51,36 @@
     <ClCompile Include="SwapBuffersHook.cpp">
       <Filter>Hooks\Hooks\SwapBuffersHook</Filter>
     </ClCompile>
+    <ClCompile Include="screenmanager.cpp">
+      <Filter>ScreenManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_demo.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_draw.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_impl_opengl2.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_impl_opengl3.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_impl_win32.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_tables.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_widgets.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="screenmanager_drawfunctions.cpp">
+      <Filter>ScreenManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="general.h" />
@@ -120,6 +150,39 @@
     <ClInclude Include="SwapBuffersHook.h">
       <Filter>Hooks\Hooks\SwapBuffersHook</Filter>
     </ClInclude>
+    <ClInclude Include="screenmanager.h">
+      <Filter>ScreenManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imconfig.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_opengl2.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_opengl3.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_opengl3_loader.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_win32.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_internal.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_rectpack.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_textedit.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_truetype.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Cheats">
@@ -175,6 +238,12 @@
     </Filter>
     <Filter Include="Hooks\Hooks\SwapBuffersHook">
       <UniqueIdentifier>{6f35ecdd-5205-4a78-a658-05c5bad71c27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ScreenManager">
+      <UniqueIdentifier>{bead5cc7-0722-4a35-abf2-32876528db0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ScreenManager\ImGUI">
+      <UniqueIdentifier>{77140652-e704-4547-9ca3-d189506390d8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

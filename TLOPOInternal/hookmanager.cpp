@@ -10,7 +10,7 @@ HookManager::HookManager(void* tlopoExeIn, void* openGl32In)
 	pyObject_SetAttrHook = new PyObject_SetAttrHook(tlopoExe);
 	pyDict_SetItemHook = new PyDict_SetItemHook(tlopoExe);
 	pypperoni_IMPL_call_funcHook = new __pypperoni_IMPL_call_funcHook(tlopoExe);
-	swapBuffersHook = new SwapBuffersHook(tlopoExe);
+	swapBuffersHook = new SwapBuffersHook(openGl32);
 
 	bHooksInitialized = false;
 }
