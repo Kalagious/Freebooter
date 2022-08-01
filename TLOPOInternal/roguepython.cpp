@@ -9,10 +9,10 @@ RoguePython::RoguePython(Cheats* cheatsIn)
 
 void RoguePython::init()
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 6; i++)
 		vPyTypes.push_back(0);
 
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 7; i++)
 		vAttr2Str.push_back(0);
 
 }
@@ -33,20 +33,20 @@ RogueFloat* RoguePython::createFloat(float fValue)
 	return tmpFloat;
 }
 
-//RogueFloat* RoguePython::createInt(float fValue)
-//{
-//	if (!vPyTypes.at(TYPES.INT))
-//		return NULL;
-//
-//	RogueFloat* tmpFloat = new RogueFloat();
-//	if (!tmpFloat)
-//		return NULL;
-//	tmpFloat->iRefCnt = 10;
-//	tmpFloat->PyType = (RogueFloat*)vPyTypes.at(TYPES.FLOAT);
-//	tmpFloat->fValue = fValue;
-//
-//	return tmpFloat;
-//}
+RogueInt* RoguePython::createInt(int64_t iValue)
+{
+	if (!vPyTypes.at(TYPES.INT))
+		return NULL;
+
+	RogueInt* tmpInt = new RogueInt();
+	if (!tmpInt)
+		return NULL;
+	tmpInt->iRefCnt = 10;
+	tmpInt->PyType = (RogueFloat*)vPyTypes.at(TYPES.INT);
+	tmpInt->iValue = iValue;
+
+	return tmpInt;
+}
 
 void RoguePython::readType(RogueObject* pValue)
 {
@@ -60,6 +60,30 @@ void RoguePython::readType(RogueObject* pValue)
 	char* pTypeName = (char*)((uint64_t*)((uint64_t*)pValue)[1])[3];
 	uint64_t pType = ((uint64_t*)pValue)[1];
 
+	if (vPyTypes.at(TYPES.INT) == NULL)
+	{
+		if (!strcmp(pTypeName, "int"))
+		{
+			printf(" [*] RP - Int Type Found\n");
+			vPyTypes.at(TYPES.INT) = pType;
+		}
+	}
+	if (vPyTypes.at(TYPES.BOOLTRUE) == NULL)
+	{
+		if (!strcmp(pTypeName, "bool") && ((uint64_t*)pValue)[2] == 1)
+		{
+			printf(" [*] RP - Bool Type True Found\n");
+			vPyTypes.at(TYPES.BOOLTRUE) = pType;
+		}
+	}
+	if (vPyTypes.at(TYPES.BOOLFALSE) == NULL)
+	{
+		if (!strcmp(pTypeName, "bool") && ((uint64_t*)pValue)[2] == 0)
+		{
+			printf(" [*] RP - Bool Type False Found\n");
+			vPyTypes.at(TYPES.BOOLFALSE) = pType;
+		}
+	}
 	if (vPyTypes.at(TYPES.FLOAT) == NULL)
 	{
 		if (!strcmp(pTypeName, "float"))
@@ -89,12 +113,12 @@ void RoguePython::readType(RogueObject* pValue)
 
 void RoguePython::readAttribute(RogueObject* pAttributeName)
 {
-	//bool bStringsFound = true;
-	//for (int i = 0; i < vAttr2Str.size(); i++)
-	//	if (!vAttr2Str.at(i))
-	//		bStringsFound = false;
-	//if (bStringsFound)
-	//	return;
+	bool bStringsFound = true;
+	for (int i = 0; i < vAttr2Str.size(); i++)
+		if (!vAttr2Str.at(i))
+			bStringsFound = false;
+	if (bStringsFound)
+		return;
 
 
 	PyVarObjectCust* tmp = (PyVarObjectCust*)pAttributeName;
@@ -119,4 +143,12 @@ void RoguePython::readAttribute(RogueObject* pAttributeName)
 	if (vAttr2Str.at(ATTRIBUTES.GETRECHARGETIME) == NULL)
 		if (tmpAttName.find("RechargeTime") != std::string::npos)
 			vAttr2Str.at(ATTRIBUTES.GETRECHARGETIME) = (uint64_t)pAttributeName;
+
+	if (vAttr2Str.at(ATTRIBUTES.GETMODIFIEDRANGE) == NULL)
+		if (tmpAttName.find("getModifiedAttackRange") != std::string::npos)
+			vAttr2Str.at(ATTRIBUTES.GETMODIFIEDRANGE) = (uint64_t)pAttributeName;
+
+	if (vAttr2Str.at(ATTRIBUTES.OBEYSCODE) == NULL)
+		if (tmpAttName.find("obeysPirateCode") != std::string::npos)
+			vAttr2Str.at(ATTRIBUTES.OBEYSCODE) = (uint64_t)pAttributeName;
 }

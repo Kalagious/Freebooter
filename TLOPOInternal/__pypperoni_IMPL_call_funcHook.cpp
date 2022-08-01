@@ -29,40 +29,51 @@ uint64_t __fastcall __pypperoni_IMPL_call_funcHook::hookFunction(RogueObject*** 
 	{
 		RogueObject* function = (RogueObject*)((uint64_t*)method)[2];
 		RogueObject* pAttributeName = (RogueObject*)((uint64_t*)function)[8];
+
+
+		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+
 		PyVarObjectCust* tmp = (PyVarObjectCust*)pAttributeName;
 		std::string tmpAttName(tmp->sName);
-
-
-		if (tmpAttName.find("amage") != std::string::npos)
+		static int tmpInt = 0;
+		if (tmpInt < 10)
+			tmpInt++;
+		else
+			tmpInt = 0;
+		if (tmpAttName.find("getTeam") != std::string::npos && tmpAttName.length() == 7)
 		{
-			uint64_t* arg1 = (uint64_t*)((*pStackPointer) - 1);
-			uint64_t* arg2 = (uint64_t*)(*((*pStackPointer) - 2));
-			uint64_t* arg3 = (uint64_t*)(*((*pStackPointer) - 3));
-			uint64_t* arg4 = (uint64_t*)(*((*pStackPointer) - 4));
-			uint64_t* arg5 = (uint64_t*)(*((*pStackPointer) - 5));
-			printf("%s  %p\n", tmp->sName, *pStackPointer);
-			//Sleep(10000000);
-	
+			pRetVal = 0x00007FF77F9AC100+0x20*tmpInt;
+			printf("%s  %p %p %d\n", tmp->sName, pStackPointer, pRetVal, iOpArg);
 
 		}
 
 
 
-		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
-
 
 		
 		cheatsGlobal->roguePython->readAttribute(pAttributeName);
-		
-		if (cheatsGlobal->cooldownsAreCringe->enable && TEST_STRING(GETRECHARGETIME))
-			((RogueFloat*)pRetVal)->fValue = cheatsGlobal->cooldownsAreCringe->fDelay;
+		if (pRetVal)
+		{
+			if (cheatsGlobal->cooldownsAreCringe->enable && TEST_STRING(GETRECHARGETIME))
+				((RogueFloat*)pRetVal)->fValue = cheatsGlobal->cooldownsAreCringe->fDelay;
 
-
-
+			else if (cheatsGlobal->sniperElite->enable && TEST_STRING(GETMODIFIEDRANGE) && cheatsGlobal->sniperElite->tick())
+			{
+				//((RogueFloat*)pRetVal)->fValue = 10;
+				//pRetVal = (uint64_t)cheatsGlobal->sniperElite->pDistanceFloat;
+				printf("%p\n", pRetVal);
+			}
+			else if (cheatsGlobal->moreLikeGuidelines->enable && TEST_STRING(OBEYSCODE) && cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE))
+				pRetVal = cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE);
+		}
 
 	}
+
+
 	if (!pRetVal)
 		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+
+
 	return pRetVal;
 }
 

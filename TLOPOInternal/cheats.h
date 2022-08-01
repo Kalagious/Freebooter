@@ -36,4 +36,6 @@ public:
 	MinigunGoBurr* minigunGoBurr;
 	TurnyBoi* turnyBoi;
 	CoolDownsAreCringe* cooldownsAreCringe;
+	SniperElite* sniperElite;
+	MoreLikeGuidelines* moreLikeGuidelines;
 };

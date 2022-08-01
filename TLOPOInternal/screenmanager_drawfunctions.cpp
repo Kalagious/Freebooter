@@ -42,8 +42,8 @@ void ScreenManager::drawGUI()
 
         DrawMain();
         DrawActive();
-        DrawPlayerCategory();
-        DrawShipCategory();
+        DrawGeneralCategory();
+        DrawMovementCategory();
         DrawAttackCategory();
         DrawVisualCategory();
 
@@ -86,32 +86,33 @@ void ScreenManager::drawGUI()
     
 }
 
-void ScreenManager::DrawPlayerCategory()
+void ScreenManager::DrawMovementCategory()
 {
     ImGui::PushFont(pHeaderFont);
-    ImGui::Begin("Player");
+    ImGui::Begin("Movement");
     ImGui::PopFont();
     ImGui::SetWindowSize(ImVec2((float)350, (float)700));
     ImGui::PushFont(pBodyFont);
 
-    cheatsGlobal->zoooom->drawMenuEntry();
     cheatsGlobal->fly->drawMenuEntry();
-    cheatsGlobal->cooldownsAreCringe->drawMenuEntry();
+    cheatsGlobal->zoooom->drawMenuEntry();
+    cheatsGlobal->zoooomShipEdition->drawMenuEntry();
+    cheatsGlobal->turnyBoi->drawMenuEntry();
     
     ImGui::PopFont();
     ImGui::End();
 }
 
-void ScreenManager::DrawShipCategory()
+void ScreenManager::DrawGeneralCategory()
 {
     ImGui::PushFont(pHeaderFont);
-    ImGui::Begin("Ship");
+    ImGui::Begin("General");
     ImGui::PopFont();
     ImGui::SetWindowSize(ImVec2((float)350, (float)700));
     ImGui::PushFont(pBodyFont);
 
-    cheatsGlobal->zoooomShipEdition->drawMenuEntry();
-    cheatsGlobal->turnyBoi->drawMenuEntry();
+    cheatsGlobal->cooldownsAreCringe->drawMenuEntry();
+
 
     ImGui::PopFont();
     ImGui::End();
@@ -139,6 +140,8 @@ void ScreenManager::DrawAttackCategory()
     ImGui::PushFont(pBodyFont);
 
     cheatsGlobal->minigunGoBurr->drawMenuEntry();
+    cheatsGlobal->sniperElite->drawMenuEntry();
+    cheatsGlobal->moreLikeGuidelines->drawMenuEntry();
 
     ImGui::PopFont();
     ImGui::End();
@@ -164,6 +167,8 @@ void ScreenManager::DrawActive()
         cheatsGlobal->zoooom->drawActive();
         cheatsGlobal->zoooomShipEdition->drawActive();
         cheatsGlobal->cooldownsAreCringe->drawActive();
+        cheatsGlobal->sniperElite->drawActive();
+        cheatsGlobal->moreLikeGuidelines->drawActive();
 
         ImGui::PopFont();
         ImGui::End();

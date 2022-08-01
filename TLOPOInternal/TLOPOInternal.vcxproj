@@ -190,6 +190,7 @@
     <ClInclude Include="general.h" />
     <ClInclude Include="hookmanager.h" />
     <ClInclude Include="hooks.h" />
+    <ClInclude Include="morelikeguidelines.h" />
     <ClInclude Include="NextPosObject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PyDict_SetItemHook.h" />
@@ -198,6 +199,7 @@
     <ClInclude Include="PyVarObject.h" />
     <ClInclude Include="roguepython.h" />
     <ClInclude Include="screenmanager.h" />
+    <ClInclude Include="sniperelite.h" />
     <ClInclude Include="SwapBuffersHook.h" />
     <ClInclude Include="UnamedHook.h" />
     <ClInclude Include="fly.h" />
@@ -229,6 +231,8 @@
     <ClCompile Include="roguepython.cpp" />
     <ClCompile Include="screenmanager.cpp" />
     <ClCompile Include="screenmanager_drawfunctions.cpp" />
+    <ClCompile Include="sniperelite.cpp" />
+    <ClCompile Include="morelikeguidelines.cpp" />
     <ClCompile Include="SwapBuffersHook.cpp" />
     <ClCompile Include="UnamedHook.cpp" />
     <ClCompile Include="fly.cpp" />

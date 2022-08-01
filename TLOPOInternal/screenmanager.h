@@ -27,8 +27,8 @@ public:
 	void SetupOrtho();
 
 
-	void DrawPlayerCategory();
-	void DrawShipCategory();
+	void DrawMovementCategory();
+	void DrawGeneralCategory();
 	void DrawVisualCategory();
 	void DrawAttackCategory();
 	void DrawActive();

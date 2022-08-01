@@ -19,6 +19,15 @@ public:
 	float fValue;
 };
 
+class RogueInt
+{
+public:
+	uint64_t iRefCnt;
+	void* PyType;
+	uint32_t padding;
+	int64_t iValue;
+};
+
 class RoguePython
 {
 public:
@@ -27,7 +36,7 @@ public:
 	void readType(RogueObject* pAttributeValue);
 	void readAttribute(RogueObject* pAttributeName);
 	RogueFloat* createFloat(float fValue);
-	//RogueInt* createInt(uint64_t iValue);
+	RogueInt* createInt(int64_t iValue);
 	Cheats* cheats;
 
 	struct _attributes
@@ -37,6 +46,10 @@ public:
 		static const uint32_t SHIPROTATIONSPEED = 2;
 		static const uint32_t CANNONRECHARGE = 3;
 		static const uint32_t GETRECHARGETIME = 4;
+		static const uint32_t GETMODIFIEDRANGE = 5;
+		static const uint32_t OBEYSCODE = 6;
+
+
 
 	} ATTRIBUTES;
 
@@ -46,10 +59,12 @@ public:
 		static const uint32_t METHOD = 1;
 		static const uint32_t BUILTIN = 2;
 		static const uint32_t INT = 3;
-		static const uint32_t STRING = 4;
-		static const uint32_t DICT = 5;
-		static const uint32_t LIST = 6;
-		static const uint32_t FUNCTION = 7;
+		static const uint32_t BOOLTRUE = 4;
+		static const uint32_t BOOLFALSE = 5;
+		static const uint32_t STRING = 6;
+		static const uint32_t DICT = 7;
+		static const uint32_t LIST = 8;
+		static const uint32_t FUNCTION = 9;
 	
 	} TYPES;
 

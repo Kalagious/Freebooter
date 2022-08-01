@@ -24,10 +24,12 @@ Cheats::Cheats()
 	minigunGoBurr = new MinigunGoBurr(this);
 	turnyBoi = new TurnyBoi(this);
 	cooldownsAreCringe = new CoolDownsAreCringe(this);
+	sniperElite = new SniperElite(this);
+	moreLikeGuidelines = new MoreLikeGuidelines(this);
 
 	minigunGoBurr->enable = true;
 	cooldownsAreCringe->enable = true;
-
+	//moreLikeGuidelines->enable = true;
 
 	uninject = false;
 	addressesAreValid = false;

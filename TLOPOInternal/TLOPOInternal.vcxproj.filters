@@ -19,19 +19,19 @@
       <Filter>RoguePython</Filter>
     </ClCompile>
     <ClCompile Include="fly.cpp">
-      <Filter>Modules\Modules\fly</Filter>
+      <Filter>Modules\Modules\Movement\fly</Filter>
     </ClCompile>
     <ClCompile Include="minigungoburr.cpp">
-      <Filter>Modules\Modules\minigungoburr</Filter>
+      <Filter>Modules\Modules\Attack\minigungoburr</Filter>
     </ClCompile>
     <ClCompile Include="turnyboi.cpp">
-      <Filter>Modules\Modules\turnyboi</Filter>
+      <Filter>Modules\Modules\Movement\turnyboi</Filter>
     </ClCompile>
     <ClCompile Include="zoooom.cpp">
-      <Filter>Modules\Modules\zoooom</Filter>
+      <Filter>Modules\Modules\Movement\zoooom</Filter>
     </ClCompile>
     <ClCompile Include="zoooomshipedition.cpp">
-      <Filter>Modules\Modules\zoooomshipedition</Filter>
+      <Filter>Modules\Modules\Movement\zoooomshipedition</Filter>
     </ClCompile>
     <ClCompile Include="__pypperoni_IMPL_call_funcHook.cpp">
       <Filter>Hooks\Hooks\__pypperoni_IMPL_call_funcHook</Filter>
@@ -82,7 +82,13 @@
       <Filter>ScreenManager</Filter>
     </ClCompile>
     <ClCompile Include="cooldownsarecringe.cpp">
-      <Filter>Modules\Modules\cooldownsarecringe</Filter>
+      <Filter>Modules\Modules\General\cooldownsarecringe</Filter>
+    </ClCompile>
+    <ClCompile Include="sniperelite.cpp">
+      <Filter>Modules\Modules\Attack\sniperelite</Filter>
+    </ClCompile>
+    <ClCompile Include="morelikeguidelines.cpp">
+      <Filter>Modules\Modules\Attack\morelikeguidelines</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,19 +127,19 @@
       <Filter>RoguePython</Filter>
     </ClInclude>
     <ClInclude Include="fly.h">
-      <Filter>Modules\Modules\fly</Filter>
+      <Filter>Modules\Modules\Movement\fly</Filter>
     </ClInclude>
     <ClInclude Include="minigungoburr.h">
-      <Filter>Modules\Modules\minigungoburr</Filter>
+      <Filter>Modules\Modules\Attack\minigungoburr</Filter>
     </ClInclude>
     <ClInclude Include="turnyboi.h">
-      <Filter>Modules\Modules\turnyboi</Filter>
+      <Filter>Modules\Modules\Movement\turnyboi</Filter>
     </ClInclude>
     <ClInclude Include="zoooom.h">
-      <Filter>Modules\Modules\zoooom</Filter>
+      <Filter>Modules\Modules\Movement\zoooom</Filter>
     </ClInclude>
     <ClInclude Include="zoooomshipedition.h">
-      <Filter>Modules\Modules\zoooomshipedition</Filter>
+      <Filter>Modules\Modules\Movement\zoooomshipedition</Filter>
     </ClInclude>
     <ClInclude Include="__pypperoni_IMPL_call_funcHook.h">
       <Filter>Hooks\Hooks\__pypperoni_IMPL_call_funcHook</Filter>
@@ -187,7 +193,13 @@
       <Filter>ScreenManager\ImGUI</Filter>
     </ClInclude>
     <ClInclude Include="cooldownsarecringe.h">
-      <Filter>Modules\Modules\cooldownsarecringe</Filter>
+      <Filter>Modules\Modules\General\cooldownsarecringe</Filter>
+    </ClInclude>
+    <ClInclude Include="sniperelite.h">
+      <Filter>Modules\Modules\Attack\sniperelite</Filter>
+    </ClInclude>
+    <ClInclude Include="morelikeguidelines.h">
+      <Filter>Modules\Modules\Attack\morelikeguidelines</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -211,21 +223,6 @@
     </Filter>
     <Filter Include="RoguePython">
       <UniqueIdentifier>{10388704-1985-462c-8dde-4df13bcfb06e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Modules\fly">
-      <UniqueIdentifier>{8a9a838e-4d2d-4410-86d4-0c007fbfdb00}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Modules\minigungoburr">
-      <UniqueIdentifier>{7c9b893b-81a2-4f5b-b633-a5ef3b79adde}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Modules\turnyboi">
-      <UniqueIdentifier>{0d38905d-a7c0-4545-8ae7-39ad4c421aa9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Modules\zoooom">
-      <UniqueIdentifier>{51789499-4a0f-4ddf-bb65-461db3712b58}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Modules\Modules\zoooomshipedition">
-      <UniqueIdentifier>{8737b3fd-e82a-4645-824c-e2753f1f89c6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Hooks\Hooks\__pypperoni_IMPL_call_funcHook">
       <UniqueIdentifier>{e255f44a-932d-4fd4-83bb-9783f80d05b5}</UniqueIdentifier>
@@ -251,8 +248,41 @@
     <Filter Include="ScreenManager\ImGUI">
       <UniqueIdentifier>{77140652-e704-4547-9ca3-d189506390d8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Modules\Modules\cooldownsarecringe">
+    <Filter Include="Modules\Modules\Movement">
+      <UniqueIdentifier>{cf95efe5-82a4-4ee6-8a2b-71beb6153485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\General">
+      <UniqueIdentifier>{0e136758-8489-4786-8875-d5bc010df901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack">
+      <UniqueIdentifier>{0a00d028-8ea4-457e-ab04-6034a9d209a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Visual">
+      <UniqueIdentifier>{8a189aa4-b380-4d41-8b73-127d18c72462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement\zoooom">
+      <UniqueIdentifier>{51789499-4a0f-4ddf-bb65-461db3712b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement\turnyboi">
+      <UniqueIdentifier>{0d38905d-a7c0-4545-8ae7-39ad4c421aa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement\zoooomshipedition">
+      <UniqueIdentifier>{8737b3fd-e82a-4645-824c-e2753f1f89c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement\fly">
+      <UniqueIdentifier>{8a9a838e-4d2d-4410-86d4-0c007fbfdb00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack\minigungoburr">
+      <UniqueIdentifier>{7c9b893b-81a2-4f5b-b633-a5ef3b79adde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\General\cooldownsarecringe">
       <UniqueIdentifier>{fa6fce52-b429-4b9b-800f-0abcb5560df1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack\sniperelite">
+      <UniqueIdentifier>{cfafd6a5-9c67-4687-9675-b3e28847f9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack\morelikeguidelines">
+      <UniqueIdentifier>{711e1278-13df-48d8-bd1f-7aa068d2d3a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
