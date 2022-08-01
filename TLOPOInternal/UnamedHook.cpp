@@ -6,6 +6,7 @@
 #include "GeneralObject.h"
 
 
+
 extern Cheats* cheatsGlobal;
 
 UnamedHook::tTargetPtr UnamedHook::oFunction;
@@ -24,12 +25,15 @@ void __fastcall UnamedHook::hookFunction(int64_t a1, int64_t a2, int64_t a3)
 	if (!cheatsGlobal->localPlayer && tmpStr.find("Bill-") != std::string::npos)
 	{
 		cheatsGlobal->localPlayer = (Player*)a1;
+
 		 
 	}
 
 	if ((uint64_t)cheatsGlobal->localPlayer && (Player*)a1 == cheatsGlobal->localPlayer)
 	{
 		cheatsGlobal->fly->tick();
+
+
 		//printf("%s  -  %p  -  %p  -  %p\n", tmpStr.c_str(), a1, a2, a3);
 	}
 	UnamedHook::oFunction(a1, a2, a3);

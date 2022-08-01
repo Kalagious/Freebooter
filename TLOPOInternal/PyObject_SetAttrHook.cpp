@@ -15,10 +15,10 @@ extern Cheats* cheatsGlobal;
 PyObject_SetAttrHook::tTargetPtr PyObject_SetAttrHook::oFunction;
 
 
-uint64_t __fastcall PyObject_SetAttrHook::hookFunction(PyObject* pObject, PyObject* pAttributeName, PyObject* pValue)
+uint64_t __fastcall PyObject_SetAttrHook::hookFunction(RogueObject* pObject, RogueObject* pAttributeName, RogueObject* pValue)
 {
-	cheatsGlobal->roguePython->readAttribute((PyObject*)pAttributeName);
-	cheatsGlobal->roguePython->readType((PyObject*)pValue);
+	cheatsGlobal->roguePython->readAttribute((RogueObject*)pAttributeName);
+	cheatsGlobal->roguePython->readType((RogueObject*)pValue);
 
 
 
@@ -27,33 +27,29 @@ uint64_t __fastcall PyObject_SetAttrHook::hookFunction(PyObject* pObject, PyObje
 		
 
 	uint64_t pModValue = 0;
-
 	if (cheatsGlobal->turnyBoi->enable && TEST_STRING(SHIPROTATIONSPEED))
 	{
 		uint64_t tmpTurn = (uint64_t)cheatsGlobal->turnyBoi->tick();
 		if (tmpTurn && ((RogueFloat*)(pValue))->fValue != 0)
 			pModValue = tmpTurn;
 	}
-	else if (cheatsGlobal->zoooom->enable && TEST_STRING(SPEED))
-		if (cheatsGlobal->zoooom->tick() && ((RogueFloat*)(pValue))->fValue != 0)
-			pModValue = (uint64_t)cheatsGlobal->zoooom->pSpeedFloat;
-	else if (cheatsGlobal->zoooomShipEdition->enable && TEST_STRING(SHIPSPEED))
-		if (cheatsGlobal->zoooomShipEdition->tick() && ((RogueFloat*)(pValue))->fValue != 0)
-			pModValue = (uint64_t)cheatsGlobal->zoooomShipEdition->pSpeedFloat;
-	else if (cheatsGlobal->minigunGoBurr->enable && TEST_STRING(CANNONRECHARGE))
-		if (cheatsGlobal->minigunGoBurr->tick())
-			pModValue = (uint64_t)cheatsGlobal->minigunGoBurr->pRechargeFloat;
+	else if (cheatsGlobal->zoooom->enable && TEST_STRING(SPEED) && cheatsGlobal->zoooom->tick() && ((RogueFloat*)(pValue))->fValue != 0)
+		pModValue = (uint64_t)cheatsGlobal->zoooom->pSpeedFloat;
+	else if (cheatsGlobal->zoooomShipEdition->enable && TEST_STRING(SHIPSPEED) && cheatsGlobal->zoooomShipEdition->tick() && ((RogueFloat*)(pValue))->fValue != 0)
+		pModValue = (uint64_t)cheatsGlobal->zoooomShipEdition->pSpeedFloat;
+	else if (cheatsGlobal->minigunGoBurr->enable && TEST_STRING(CANNONRECHARGE) && cheatsGlobal->minigunGoBurr->tick())
+		pModValue = (uint64_t)cheatsGlobal->minigunGoBurr->pRechargeFloat;
 
 	if (!pModValue)
 		pModValue = (uint64_t)pValue;
 	
-	return PyObject_SetAttrHook::oFunction(pObject, pAttributeName, (PyObject*)pModValue);
+	return PyObject_SetAttrHook::oFunction(pObject, pAttributeName, (RogueObject*)pModValue);
 }
 
 
 PyObject_SetAttrHook::PyObject_SetAttrHook(void* moduleBaseIn)
 { 
-	hookName = "PyObject_SetAttrHook Hook";
+	hookName = "RogueObject_SetAttrHook Hook";
 	hookLen = 16;
 	viSig = { 0x48, 0xFF, 0x02, 0x48, 0x8D, 0x4C, 0x24, 0x48, 0xE8, 0x3F, 0x3F, 0x3F, 0x3F, 0x48, 0x8B, 0x83, 0x98, 0x00, 0x00, 0x00, 0x48, 0x85, 0xC0, 0x74, 0x3F, 0x48, 0x8B, 0x54, 0x24, 0x48, 0x4C, 0x8B, 0xC6, 0x48, 0x8B, 0xCF, 0xFF, 0xD0, 0x48, 0x8B, 0x4C, 0x24, 0x48, 0x8B, 0xD8, 0x48, 0x83, 0x29, 0x01, 0x75, 0x3F, 0x48, 0x8B, 0x51, 0x08, 0xFF, 0x52, 0x30 };
 	moduleBase = moduleBaseIn;

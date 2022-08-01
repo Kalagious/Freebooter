@@ -24,9 +24,10 @@ class RoguePython
 public:
 	RoguePython(Cheats* cheatsIn);
 	void init();
-	void readType(PyObject* pAttributeValue);
-	void readAttribute(PyObject* pAttributeName);
+	void readType(RogueObject* pAttributeValue);
+	void readAttribute(RogueObject* pAttributeName);
 	RogueFloat* createFloat(float fValue);
+	//RogueInt* createInt(uint64_t iValue);
 	Cheats* cheats;
 
 	struct _attributes

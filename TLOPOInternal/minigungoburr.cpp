@@ -24,3 +24,17 @@ bool MinigunGoBurr::tick()
 	}
 	return true;
 }
+
+void MinigunGoBurr::drawActive()
+{
+	if (enable)
+		ImGui::CollapsingHeader("   Minigun Go Burr", ImGuiTreeNodeFlags_Leaf);
+}
+
+void MinigunGoBurr::drawMenuEntry()
+{
+	if (ImGui::CollapsingHeader("Minigun Go Burr"))
+	{
+		ImGui::Checkbox("Enable##MinigunGoBurr", &enable);
+	}
+}

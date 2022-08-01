@@ -13,4 +13,8 @@ public:
 	float vertSpeedMult;
 	Vector3 virtualPos;
 	Cheats* cheats;
+
+
+	void drawActive();
+	void drawMenuEntry();
 };

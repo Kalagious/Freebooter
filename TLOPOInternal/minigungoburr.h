@@ -12,5 +12,6 @@ public:
 	bool tick();
 	Cheats* cheats;
 	RogueFloat* pRechargeFloat;
-	;
+	void drawActive();
+	void drawMenuEntry();
 };

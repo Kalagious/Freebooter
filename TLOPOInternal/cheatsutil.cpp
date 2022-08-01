@@ -1,6 +1,6 @@
 #include "cheats.h"
 #include "windows.h"
-#include "Python.h"
+
 
 #define gModule(x) (void*)GetModuleHandle(x)
 
@@ -22,9 +22,11 @@ Cheats::Cheats()
 	zoooom = new Zoooom(this);
 	zoooomShipEdition = new ZoooomShipEdition(this);
 	minigunGoBurr = new MinigunGoBurr(this);
-	minigunGoBurr->enable = true;
 	turnyBoi = new TurnyBoi(this);
+	cooldownsAreCringe = new CoolDownsAreCringe(this);
 
+	minigunGoBurr->enable = true;
+	cooldownsAreCringe->enable = true;
 
 
 	uninject = false;
@@ -54,7 +56,7 @@ void Cheats::recalculateAddresses()
 
 void Cheats::cleanup()
 {
-	printf(" [*] Exiting!\n");
+	printf("\n\n [*] Exiting!\n");
 	hookManager->removeAll();
 	screenManager->cleanUp();
 	Sleep(200);

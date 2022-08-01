@@ -5,15 +5,13 @@
 
 class Cheats;
 
-class TurnyBoi : public Module
+class CoolDownsAreCringe : public Module
 {
 public:
-	TurnyBoi(Cheats* cheatsIn);
-	RogueObject* tick();
+	CoolDownsAreCringe(Cheats* cheatsIn);
+	float fDelay;
 	Cheats* cheats;
-	RogueFloat* pRightFloat;
-	RogueFloat* pLeftFloat;
-	float fTurnSpeed;
+	RogueFloat* pDelayFloat;
 	void drawActive();
 	void drawMenuEntry();
 };

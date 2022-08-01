@@ -13,4 +13,6 @@ public:
 	float fSpeed;
 	Cheats* cheats;
 	RogueFloat* pSpeedFloat;
+	void drawActive();
+	void drawMenuEntry();
 };

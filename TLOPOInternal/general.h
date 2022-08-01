@@ -1,5 +1,4 @@
 #pragma once
-
 #include <vector>
 #include <windows.h>
 #include <tlHelp32.h>
@@ -7,12 +6,14 @@
 #include <WinDef.h>
 #include <tchar.h>
 #include <iostream>
-#include "Python.h"
+
 #pragma warning(disable: 26495)
 
 
 void mainCode(HMODULE hModule);
 extern const float PI;
+
+
 
 class Vector2
 {

@@ -81,6 +81,9 @@
     <ClCompile Include="screenmanager_drawfunctions.cpp">
       <Filter>ScreenManager</Filter>
     </ClCompile>
+    <ClCompile Include="cooldownsarecringe.cpp">
+      <Filter>Modules\Modules\cooldownsarecringe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="general.h" />
@@ -183,6 +186,9 @@
     <ClInclude Include="ImGUI\imstb_truetype.h">
       <Filter>ScreenManager\ImGUI</Filter>
     </ClInclude>
+    <ClInclude Include="cooldownsarecringe.h">
+      <Filter>Modules\Modules\cooldownsarecringe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Cheats">
@@ -244,6 +250,9 @@
     </Filter>
     <Filter Include="ScreenManager\ImGUI">
       <UniqueIdentifier>{77140652-e704-4547-9ca3-d189506390d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\cooldownsarecringe">
+      <UniqueIdentifier>{fa6fce52-b429-4b9b-800f-0abcb5560df1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

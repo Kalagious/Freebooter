@@ -34,3 +34,18 @@ bool ZoooomShipEdition::tick()
 
 	return true;
 }
+
+void ZoooomShipEdition::drawActive()
+{
+	if (enable)
+		ImGui::CollapsingHeader("   Zoooom Ship Edition", ImGuiTreeNodeFlags_Leaf);
+}
+
+void ZoooomShipEdition::drawMenuEntry()
+{
+	if (ImGui::CollapsingHeader("Zoooom Ship Edition"))
+	{
+		ImGui::Checkbox("Enable##ZoooomShipEdition", &enable);
+		ImGui::DragFloat("Speed##ZoooomShipEdition", &fSpeed, 0.01, 2, 6);
+	}
+}

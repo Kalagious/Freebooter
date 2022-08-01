@@ -16,7 +16,7 @@ TurnyBoi::TurnyBoi(Cheats* cheatsIn)
 }
 
 
-PyObject* TurnyBoi::tick()
+RogueObject* TurnyBoi::tick()
 {
 	if (!pRightFloat)
 	{
@@ -34,10 +34,25 @@ PyObject* TurnyBoi::tick()
 
 
 	if (GetAsyncKeyState(0x41))
-		return (PyObject*)pLeftFloat;
+		return (RogueObject*)pLeftFloat;
 
 	if (GetAsyncKeyState(0x44))
-		return (PyObject*)pRightFloat;
+		return (RogueObject*)pRightFloat;
 
 	return NULL;
+}
+
+void TurnyBoi::drawActive()
+{
+	if (enable)
+		ImGui::CollapsingHeader("   Turny Boi", ImGuiTreeNodeFlags_Leaf);
+}
+
+void TurnyBoi::drawMenuEntry()
+{
+	if (ImGui::CollapsingHeader("Turny Boi"))
+	{
+		ImGui::Checkbox("Enable##TurnyBoi", &enable);
+		ImGui::DragFloat("Turn Speed##TurnyBoi", &fTurnSpeed, 0.01, 2, 6);
+	}
 }

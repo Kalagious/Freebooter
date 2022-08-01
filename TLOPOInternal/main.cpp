@@ -5,7 +5,6 @@
 #include <iostream>
 #include "hookmanager.h"
 
-const float PI = 3.14159265358979F;
 Cheats* cheatsGlobal;
 
 void mainCode(HMODULE hModule)
@@ -20,7 +19,7 @@ void mainCode(HMODULE hModule)
 	printf(" [*] Starting!\n");
 	::ShowWindow(::GetConsoleWindow(), SW_SHOW);
 	SetWindowTextA(::GetConsoleWindow(), "Freebooter");
-
+	
 
 	Cheats cheats;
 	cheatsGlobal = &cheats;

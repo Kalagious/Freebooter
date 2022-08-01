@@ -5,6 +5,8 @@
 #include "cheats.h"
 #include "GeneralObject.h"
 #include <fstream>
+#include "roguepython.h"
+
 #define TEST_STRING(x) cheatsGlobal->roguePython->vAttr2Str.at(cheatsGlobal->roguePython->ATTRIBUTES.x) == (uint64_t)pAttributeName
 
 extern Cheats* cheatsGlobal;
@@ -13,28 +15,54 @@ extern Cheats* cheatsGlobal;
 __pypperoni_IMPL_call_funcHook::tTargetPtr __pypperoni_IMPL_call_funcHook::oFunction;
 
 
-uint64_t __fastcall __pypperoni_IMPL_call_funcHook::hookFunction(PyObject*** pStackPointer, int64_t iOpArg, PyObject* pKwargs)
+uint64_t __fastcall __pypperoni_IMPL_call_funcHook::hookFunction(RogueObject*** pStackPointer, int64_t iOpArg, RogueObject* pKwargs)
 {
-	PyObject** pfunc = (*pStackPointer) - iOpArg - 1;
-	PyObject* method = *pfunc;
+	RogueObject** pfunc = (*pStackPointer) - iOpArg - 1;
+	RogueObject* method = *pfunc;
 
 
-	uint64_t pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+	uint64_t pRetVal = NULL;
 
 	cheatsGlobal->roguePython->readType(method);
 
 	if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.METHOD) == (uint64_t)((RogueObject*)method)->PyType)
 	{
-		PyObject* function = (PyObject*)((uint64_t*)method)[2];
-		PyObject* pAttributeName = (PyObject*)((uint64_t*)function)[8];
-		cheatsGlobal->roguePython->readAttribute(pAttributeName);
-		if (TEST_STRING(GETRECHARGETIME))
+		RogueObject* function = (RogueObject*)((uint64_t*)method)[2];
+		RogueObject* pAttributeName = (RogueObject*)((uint64_t*)function)[8];
+		PyVarObjectCust* tmp = (PyVarObjectCust*)pAttributeName;
+		std::string tmpAttName(tmp->sName);
+
+
+		if (tmpAttName.find("amage") != std::string::npos)
 		{
-			((RogueFloat*)pRetVal)->fValue = 0;
+			uint64_t* arg1 = (uint64_t*)((*pStackPointer) - 1);
+			uint64_t* arg2 = (uint64_t*)(*((*pStackPointer) - 2));
+			uint64_t* arg3 = (uint64_t*)(*((*pStackPointer) - 3));
+			uint64_t* arg4 = (uint64_t*)(*((*pStackPointer) - 4));
+			uint64_t* arg5 = (uint64_t*)(*((*pStackPointer) - 5));
+			printf("%s  %p\n", tmp->sName, *pStackPointer);
+			//Sleep(10000000);
+	
+
 		}
 
-	}
 
+
+		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+
+
+		
+		cheatsGlobal->roguePython->readAttribute(pAttributeName);
+		
+		if (cheatsGlobal->cooldownsAreCringe->enable && TEST_STRING(GETRECHARGETIME))
+			((RogueFloat*)pRetVal)->fValue = cheatsGlobal->cooldownsAreCringe->fDelay;
+
+
+
+
+	}
+	if (!pRetVal)
+		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
 	return pRetVal;
 }
 

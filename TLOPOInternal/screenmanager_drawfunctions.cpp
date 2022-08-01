@@ -9,55 +9,177 @@ void ScreenManager::drawGUI()
 {
     static float fFade = 0;
     float fFadeRate = 0.007;
+    static float iChroma = 0;
 
     if (bShowGUI)
     {
-        static float iChroma = 0;
+        if (!imGUIInitialized)
+            return;
+
         if (fFade < 0.6)
             fFade += fFadeRate;
 
         float background[4] = { 0.0f, 0.0f, 0.0f, fFade };
         SetupOrtho();
         DrawFilledRect(0, 0, 3000, 3000, background);
+        RestoreGL();
+
 
         if (iChroma >= 360)
             iChroma = 0;
         else
             iChroma += 0.1;
-        if (!imGUIInitialized)
-            return;
+       
  
         ImGui::GetStyle().Colors[ImGuiCol_Border] = HSVtoRGB(iChroma, 100, 100, 1);
 
+
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplWin32_NewFrame();
-        ImGui::ShowDemoWindow();
         ImGui::NewFrame();
-        ImGui::Begin("Player");
-        ImGui::SetWindowSize(ImVec2((float)250, (float)400));
-        ImGui::End();
-        ImGui::Begin("Ship");
-        ImGui::SetWindowSize(ImVec2((float)250, (float)400));
-        ImGui::End();
-        ImGui::Begin("Weapon");
-        ImGui::SetWindowSize(ImVec2((float)250, (float)400));
-        ImGui::End();
-        ImGui::Begin("Visual");
-        ImGui::SetWindowSize(ImVec2((float)250, (float)400));
-        ImGui::End();
+
+        
+
+        DrawMain();
+        DrawActive();
+        DrawPlayerCategory();
+        DrawShipCategory();
+        DrawAttackCategory();
+        DrawVisualCategory();
+
+
+
         ImGui::Render();
-
-
-        // Draw the overlay
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
     else
     {
         if (fFade > 0)
+        {
+
             fFade -= fFadeRate;
+            float background[4] = { 0.0f, 0.0f, 0.0f, fFade };
+            SetupOrtho();
+            DrawFilledRect(0, 0, 3000, 3000, background);
+            RestoreGL();
+        }
+
+        if (bShowActiveModules)
+        {
+            if (iChroma >= 360)
+                iChroma = 0;
+            else
+                iChroma += 0.1;
+
+
+            ImGui::GetStyle().Colors[ImGuiCol_Border] = HSVtoRGB(iChroma, 100, 100, 1);
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplWin32_NewFrame();
+            ImGui::NewFrame();
+            DrawActive();
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        }
     }
+
+
+    
 }
 
+void ScreenManager::DrawPlayerCategory()
+{
+    ImGui::PushFont(pHeaderFont);
+    ImGui::Begin("Player");
+    ImGui::PopFont();
+    ImGui::SetWindowSize(ImVec2((float)350, (float)700));
+    ImGui::PushFont(pBodyFont);
+
+    cheatsGlobal->zoooom->drawMenuEntry();
+    cheatsGlobal->fly->drawMenuEntry();
+    cheatsGlobal->cooldownsAreCringe->drawMenuEntry();
+    
+    ImGui::PopFont();
+    ImGui::End();
+}
+
+void ScreenManager::DrawShipCategory()
+{
+    ImGui::PushFont(pHeaderFont);
+    ImGui::Begin("Ship");
+    ImGui::PopFont();
+    ImGui::SetWindowSize(ImVec2((float)350, (float)700));
+    ImGui::PushFont(pBodyFont);
+
+    cheatsGlobal->zoooomShipEdition->drawMenuEntry();
+    cheatsGlobal->turnyBoi->drawMenuEntry();
+
+    ImGui::PopFont();
+    ImGui::End();
+}
+
+void ScreenManager::DrawVisualCategory()
+{
+    ImGui::PushFont(pHeaderFont);
+    ImGui::Begin("Visual");
+    ImGui::PopFont();
+    ImGui::SetWindowSize(ImVec2((float)350, (float)700));
+    ImGui::PushFont(pBodyFont);
+
+
+    ImGui::PopFont();
+    ImGui::End();
+}
+
+void ScreenManager::DrawAttackCategory()
+{
+    ImGui::PushFont(pHeaderFont);
+    ImGui::Begin("Attack");
+    ImGui::PopFont();
+    ImGui::SetWindowSize(ImVec2((float)350, (float)700));
+    ImGui::PushFont(pBodyFont);
+
+    cheatsGlobal->minigunGoBurr->drawMenuEntry();
+
+    ImGui::PopFont();
+    ImGui::End();
+}
+
+void ScreenManager::DrawActive()
+{
+    if (bShowActiveModules || bShowGUI)
+        ImGui::PushFont(pHeaderFont);
+        if (bShowGUI)
+            ImGui::Begin("Active", NULL, ImGuiWindowFlags_NoCollapse);
+        else
+            ImGui::Begin("Active", NULL, ImGuiWindowFlags_NoCollapse || ImGuiWindowFlags_NoMouseInputs);
+
+        ImGui::PopFont();
+        ImGui::PushFont(pBodyFont);
+        if (bShowGUI)
+            ImGui::Checkbox("Show Active Modules", &bShowActiveModules);
+        
+        cheatsGlobal->fly->drawActive();
+        cheatsGlobal->minigunGoBurr->drawActive();
+        cheatsGlobal->turnyBoi->drawActive();
+        cheatsGlobal->zoooom->drawActive();
+        cheatsGlobal->zoooomShipEdition->drawActive();
+        cheatsGlobal->cooldownsAreCringe->drawActive();
+
+        ImGui::PopFont();
+        ImGui::End();
+}
+
+
+void ScreenManager::DrawMain()
+{
+    ImGui::PushFont(pHeaderFont);
+    ImGui::Begin("Freebooter");
+    ImGui::PopFont();
+    ImGui::SetWindowSize(ImVec2((float)350, (float)700));
+    ImGui::PushFont(pBodyFont);
+    ImGui::PopFont();
+    ImGui::End();
+}
 
 
 ImVec4 HSVtoRGB(float H, float S, float V, float A) 
@@ -96,15 +218,15 @@ void ScreenManager::SetupOrtho()
 {
     glPushAttrib(GL_ALL_ATTRIB_BITS);
     glPushMatrix();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
     GLint viewport[4];
     glGetIntegerv(GL_VIEWPORT, viewport);
     glViewport(0, 0, viewport[2], viewport[3]);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0, viewport[2], viewport[3], 0, -1, 1);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glDisable(GL_DEPTH_TEST);
+
 }
 
 void ScreenManager::RestoreGL()

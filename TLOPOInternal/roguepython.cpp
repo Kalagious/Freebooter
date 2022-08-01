@@ -33,7 +33,22 @@ RogueFloat* RoguePython::createFloat(float fValue)
 	return tmpFloat;
 }
 
-void RoguePython::readType(PyObject* pValue)
+//RogueFloat* RoguePython::createInt(float fValue)
+//{
+//	if (!vPyTypes.at(TYPES.INT))
+//		return NULL;
+//
+//	RogueFloat* tmpFloat = new RogueFloat();
+//	if (!tmpFloat)
+//		return NULL;
+//	tmpFloat->iRefCnt = 10;
+//	tmpFloat->PyType = (RogueFloat*)vPyTypes.at(TYPES.FLOAT);
+//	tmpFloat->fValue = fValue;
+//
+//	return tmpFloat;
+//}
+
+void RoguePython::readType(RogueObject* pValue)
 {
 	bool bTypesFound = true;
 	for (int i = 0; i < vPyTypes.size(); i++)
@@ -72,7 +87,7 @@ void RoguePython::readType(PyObject* pValue)
 }
 
 
-void RoguePython::readAttribute(PyObject* pAttributeName)
+void RoguePython::readAttribute(RogueObject* pAttributeName)
 {
 	//bool bStringsFound = true;
 	//for (int i = 0; i < vAttr2Str.size(); i++)
@@ -80,8 +95,7 @@ void RoguePython::readAttribute(PyObject* pAttributeName)
 	//		bStringsFound = false;
 	//if (bStringsFound)
 	//	return;
-	if (!cheats->hookManager->bHooksInitialized)
-		return;
+
 
 	PyVarObjectCust* tmp = (PyVarObjectCust*)pAttributeName;
 	std::string tmpAttName(tmp->sName);

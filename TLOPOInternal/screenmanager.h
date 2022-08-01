@@ -14,7 +14,8 @@ public:
 	ScreenManager();
 
 	bool imGUIInitialized;
-	bool bShowGUI;
+	bool bShowActiveModules;
+	static bool bShowGUI;
 
 	bool initializeImGui(HDC hDc);
 	void cleanUp();
@@ -24,6 +25,19 @@ public:
 	void DrawFilledRect(float x, float y, float width, float height, const float color[3]);
 	void RestoreGL();
 	void SetupOrtho();
+
+
+	void DrawPlayerCategory();
+	void DrawShipCategory();
+	void DrawVisualCategory();
+	void DrawAttackCategory();
+	void DrawActive();
+	void DrawMain();
+
+
+
+	ImFont* pBodyFont;
+	ImFont* pHeaderFont;
 	HWND hGameWindow;
 	static WNDPROC hGameWindowProc;
 };

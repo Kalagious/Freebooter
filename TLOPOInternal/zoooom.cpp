@@ -30,3 +30,19 @@ bool Zoooom::tick()
 	}
 	return true;
 }
+
+void Zoooom::drawActive()
+{
+	if (enable)
+		ImGui::CollapsingHeader("   Zoooom", ImGuiTreeNodeFlags_Leaf);
+}
+
+void Zoooom::drawMenuEntry()
+{
+	if (ImGui::CollapsingHeader("Zoooom"))
+	{
+		ImGui::Checkbox("Enable##Zoooom", &enable);
+		ImGui::DragFloat("Speed##Zoooom", &fSpeed, 0.01, 2, 6);
+	}
+}
+

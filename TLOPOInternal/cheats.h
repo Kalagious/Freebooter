@@ -1,10 +1,11 @@
 #pragma once
-#include "hookmanager.h"
 #include "screenmanager.h"
 #include "allmodules.h"
 #include "module.h"
 #include "allclasses.h"
 #include "roguepython.h"
+#include "hookmanager.h"
+
 
 
 class Cheats {
@@ -34,4 +35,5 @@ public:
 	ZoooomShipEdition* zoooomShipEdition;
 	MinigunGoBurr* minigunGoBurr;
 	TurnyBoi* turnyBoi;
+	CoolDownsAreCringe* cooldownsAreCringe;
 };
