@@ -11,7 +11,7 @@ SniperElite::SniperElite(Cheats* cheatsIn)
 	enable = false;
 	cheats = cheatsIn;
 	pDistanceFloat = NULL;
-	fDistance = 3.273438;
+	fDistance = 100;
 }
 
 

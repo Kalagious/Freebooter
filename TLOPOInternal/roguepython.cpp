@@ -9,7 +9,8 @@ RoguePython::RoguePython(Cheats* cheatsIn)
 
 void RoguePython::init()
 {
-	for (int i = 0; i < 6; i++)
+
+	for (int i = 0; i < 7; i++)
 		vPyTypes.push_back(0);
 
 	for (int i = 0; i < 7; i++)
@@ -73,7 +74,7 @@ void RoguePython::readType(RogueObject* pValue)
 		if (!strcmp(pTypeName, "bool") && ((uint64_t*)pValue)[2] == 1)
 		{
 			printf(" [*] RP - Bool Type True Found\n");
-			vPyTypes.at(TYPES.BOOLTRUE) = pType;
+			vPyTypes.at(TYPES.BOOLTRUE) = (uint64_t)pValue;
 		}
 	}
 	if (vPyTypes.at(TYPES.BOOLFALSE) == NULL)
@@ -81,7 +82,7 @@ void RoguePython::readType(RogueObject* pValue)
 		if (!strcmp(pTypeName, "bool") && ((uint64_t*)pValue)[2] == 0)
 		{
 			printf(" [*] RP - Bool Type False Found\n");
-			vPyTypes.at(TYPES.BOOLFALSE) = pType;
+			vPyTypes.at(TYPES.BOOLFALSE) = (uint64_t)pValue;
 		}
 	}
 	if (vPyTypes.at(TYPES.FLOAT) == NULL)
@@ -106,6 +107,14 @@ void RoguePython::readType(RogueObject* pValue)
 		{
 			printf(" [*] RP - BuiltIn Type Found\n");
 			vPyTypes.at(TYPES.BUILTIN) = pType;
+		}
+	}
+	if (vPyTypes.at(TYPES.NONE) == NULL)
+	{
+		if (!strcmp(pTypeName, "NoneType"))
+		{
+			printf(" [*] RP - None Type Found\n");
+			vPyTypes.at(TYPES.NONE) = (uint64_t)pValue;
 		}
 	}
 }

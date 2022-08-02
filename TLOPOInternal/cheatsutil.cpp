@@ -27,9 +27,11 @@ Cheats::Cheats()
 	sniperElite = new SniperElite(this);
 	moreLikeGuidelines = new MoreLikeGuidelines(this);
 
-	minigunGoBurr->enable = true;
-	cooldownsAreCringe->enable = true;
+	//minigunGoBurr->enable = true;
+	//cooldownsAreCringe->enable = true;
 	//moreLikeGuidelines->enable = true;
+	//sniperElite->enable = true;
+
 
 	uninject = false;
 	addressesAreValid = false;

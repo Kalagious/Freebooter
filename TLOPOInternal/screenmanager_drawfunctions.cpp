@@ -154,7 +154,7 @@ void ScreenManager::DrawActive()
         if (bShowGUI)
             ImGui::Begin("Active", NULL, ImGuiWindowFlags_NoCollapse);
         else
-            ImGui::Begin("Active", NULL, ImGuiWindowFlags_NoCollapse || ImGuiWindowFlags_NoMouseInputs);
+            ImGui::Begin("Active", NULL, ImGuiWindowFlags_NoCollapse || ImGuiWindowFlags_NoMouseInputs || ImGuiWindowFlags_NoResize);
 
         ImGui::PopFont();
         ImGui::PushFont(pBodyFont);

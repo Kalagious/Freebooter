@@ -61,10 +61,13 @@ public:
 		static const uint32_t INT = 3;
 		static const uint32_t BOOLTRUE = 4;
 		static const uint32_t BOOLFALSE = 5;
-		static const uint32_t STRING = 6;
-		static const uint32_t DICT = 7;
-		static const uint32_t LIST = 8;
-		static const uint32_t FUNCTION = 9;
+		static const uint32_t NONE = 6;
+
+
+		static const uint32_t STRING = 7;
+		static const uint32_t DICT = 8;
+		static const uint32_t LIST = 9;
+		static const uint32_t FUNCTION = 10;
 	
 	} TYPES;
 

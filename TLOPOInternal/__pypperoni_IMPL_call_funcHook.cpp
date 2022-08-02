@@ -30,22 +30,22 @@ uint64_t __fastcall __pypperoni_IMPL_call_funcHook::hookFunction(RogueObject*** 
 		RogueObject* function = (RogueObject*)((uint64_t*)method)[2];
 		RogueObject* pAttributeName = (RogueObject*)((uint64_t*)function)[8];
 
-
-		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
-
 		PyVarObjectCust* tmp = (PyVarObjectCust*)pAttributeName;
 		std::string tmpAttName(tmp->sName);
-		static int tmpInt = 0;
-		if (tmpInt < 10)
-			tmpInt++;
-		else
-			tmpInt = 0;
-		if (tmpAttName.find("getTeam") != std::string::npos && tmpAttName.length() == 7)
-		{
-			pRetVal = 0x00007FF77F9AC100+0x20*tmpInt;
-			printf("%s  %p %p %d\n", tmp->sName, pStackPointer, pRetVal, iOpArg);
 
-		}
+		
+		
+		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+		cheatsGlobal->roguePython->readType((RogueObject*)pRetVal);
+
+		 
+		//if (tmpAttName.find("willWeapon") != std::string::npos)
+		//{
+		//	//printf("%s  %p %p %d\n", tmp->sName, pStackPointer, pRetVal, iOpArg);
+		//	return 0x00007FF7C5CDC0E0;
+		//}
+
+
 
 
 
@@ -59,12 +59,12 @@ uint64_t __fastcall __pypperoni_IMPL_call_funcHook::hookFunction(RogueObject*** 
 
 			else if (cheatsGlobal->sniperElite->enable && TEST_STRING(GETMODIFIEDRANGE) && cheatsGlobal->sniperElite->tick())
 			{
-				//((RogueFloat*)pRetVal)->fValue = 10;
-				//pRetVal = (uint64_t)cheatsGlobal->sniperElite->pDistanceFloat;
-				printf("%p\n", pRetVal);
+				if (((RogueFloat*)pRetVal)->PyType == (void*)cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.FLOAT))
+					((RogueFloat*)pRetVal)->fValue = cheatsGlobal->sniperElite->fDistance;
 			}
 			else if (cheatsGlobal->moreLikeGuidelines->enable && TEST_STRING(OBEYSCODE) && cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE))
-				pRetVal = cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE);
+				if (pRetVal == (uint64_t)cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLFALSE))
+						pRetVal = cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE);
 		}
 
 	}
