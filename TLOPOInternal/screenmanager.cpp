@@ -1,11 +1,28 @@
 #include "screenmanager.h"
+#include "cheats.h"
 
 WNDPROC ScreenManager::hGameWindowProc;
 bool ScreenManager::bShowGUI;
 
+extern Cheats* cheatsGlobal;
+
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK windowProc_hook(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+
+	if (!cheatsGlobal->minigunGoBurr->hWnd)
+		cheatsGlobal->minigunGoBurr->hWnd = hWnd;
+	if (uMsg == WM_LBUTTONDOWN)
+	{
+		cheatsGlobal->minigunGoBurr->bMouseDown = true;
+	}
+
+	if (uMsg == WM_LBUTTONUP)
+	{
+		cheatsGlobal->minigunGoBurr->bMouseDown = false;
+	}
+
+
 
 	if (ScreenManager::bShowGUI)
 	{

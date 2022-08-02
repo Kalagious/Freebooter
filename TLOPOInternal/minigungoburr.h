@@ -12,6 +12,9 @@ public:
 	bool tick();
 	Cheats* cheats;
 	RogueFloat* pRechargeFloat;
+	bool bEnableAutoClick;
+	bool bMouseDown;
+	HWND hWnd;
 	void drawActive();
 	void drawMenuEntry();
 };
