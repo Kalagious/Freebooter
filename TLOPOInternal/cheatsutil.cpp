@@ -34,7 +34,6 @@ Cheats::Cheats()
 	sniperElite->enable = true;
 	turnyBoi->enable = true;
 
-
 	uninject = false;
 	addressesAreValid = false;
 }

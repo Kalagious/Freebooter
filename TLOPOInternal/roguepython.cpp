@@ -51,11 +51,14 @@ RogueInt* RoguePython::createInt(int64_t iValue)
 
 void RoguePython::readType(RogueObject* pValue)
 {
+	if (!pValue)
+		return;
+
 	bool bTypesFound = true;
 	for (int i = 0; i < vPyTypes.size(); i++)
 		if (!vPyTypes.at(i))
 			bTypesFound = false;
-	if (bTypesFound || !cheats->hookManager->bHooksInitialized || !pValue)
+	if (bTypesFound || !cheats->hookManager->bHooksInitialized)
 		return;
 
 	char* pTypeName = (char*)((uint64_t*)((uint64_t*)pValue)[1])[3];
@@ -130,6 +133,10 @@ void RoguePython::readType(RogueObject* pValue)
 
 void RoguePython::readAttribute(RogueObject* pAttributeName)
 {
+
+	if (!pAttributeName)
+		return;
+
 	bool bStringsFound = true;
 	for (int i = 0; i < vAttr2Str.size(); i++)
 		if (!vAttr2Str.at(i))

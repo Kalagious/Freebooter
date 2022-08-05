@@ -7,7 +7,8 @@
 #include <fstream>
 #include "roguepython.h"
 
-#define TEST_STRING(x) cheatsGlobal->roguePython->vAttr2Str.at(cheatsGlobal->roguePython->ATTRIBUTES.x) == (uint64_t)pFunctionName
+#define TEST_STRING(x) cheatsGlobal->roguePython->vAttr2Str.at(cheatsGlobal->roguePython->ATTRIBUTES.x) && cheatsGlobal->roguePython->vAttr2Str.at(cheatsGlobal->roguePython->ATTRIBUTES.x) == (uint64_t)pFunctionName
+#define IS_FUNCTION(x) cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.x) && cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.x) == (uint64_t)((RogueObject*)function)->PyType
 
 extern Cheats* cheatsGlobal;
 
@@ -19,97 +20,110 @@ uint64_t __fastcall __pypperoni_IMPL_call_funcHook::hookFunction(RogueObject*** 
 {
 	RogueObject** pfunc = (*pStackPointer) - iOpArg - 1;
 	RogueObject* function = *pfunc;
-	RogueObject* pFunctionName = NULL;
 
+	if (!function)
+		return __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+
+
+
+	RogueObject* pFunctionName = NULL;
 	uint64_t pRetVal = NULL;
+	bool bKnownType = false;
+	std::string sFunctionName = "";
+
 
 	cheatsGlobal->roguePython->readType(function);
 
 	// Method
-	if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.METHOD) == (uint64_t)((RogueObject*)function)->PyType)
+	if (IS_FUNCTION(METHOD))
 	{
-
-
-
 		RogueObject* method = (RogueObject*)((uint64_t*)function)[2];
 		pFunctionName = (RogueObject*)((uint64_t*)method)[8];
-		cheatsGlobal->roguePython->readAttribute(pFunctionName);
-
-
-		//if (tmpAttName.find("doBroadside") != std::string::npos)
-		//{
-		//	static RogueFloat* tmpFloat = cheatsGlobal->roguePython->createFloat(1.6);
-		//	*((*pStackPointer) - 2) = (RogueObject*)tmpFloat; 
-		//	printf("%s  %d %p %p %p %p %p\n", tmp->sName, iOpArg, *((*pStackPointer) - 1), *((*pStackPointer) - 2), *((*pStackPointer) - 2), *((*pStackPointer) - 3), *((*pStackPointer) - 4), *((*pStackPointer) - 5));
-			
-		//}
-		//
-		
-
-
-		// Pre Execution Hooks
-		if (cheatsGlobal->cannonFlashSuppressor->enable && TEST_STRING(PLAYFIREEFFECT))
-			return cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.NONE);
-
-
-
-		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs)	;
-		cheatsGlobal->roguePython->readType((RogueObject*)pRetVal);
-
-
-		//if (tmpAttName.find("checkBroadside") != std::string::npos)
-		//{
-		//		static RogueFloat* tmpFloat = cheatsGlobal->roguePython->createFloat(1.6);
-		//		pRetVal = (uint64_t)tmpFloat;
-
-		//}
-
-		//if (tmpAttName.find("canAimBroadside") != std::string::npos)
-		//{
-		//	pRetVal = cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE);
-
-		//}
-		// 
-		// Post Execution Hooks
-		if (pRetVal)
-		{
-			if (cheatsGlobal->cooldownsAreCringe->enable && TEST_STRING(GETRECHARGETIME))
-				((RogueFloat*)pRetVal)->fValue = cheatsGlobal->cooldownsAreCringe->fDelay;
-
-			else if (cheatsGlobal->sniperElite->enable && TEST_STRING(GETMODIFIEDRANGE) && cheatsGlobal->sniperElite->tick())
-			{
-				if (((RogueFloat*)pRetVal)->PyType == (void*)cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.FLOAT))
-					((RogueFloat*)pRetVal)->fValue = cheatsGlobal->sniperElite->fDistance;
-			}
-			else if (cheatsGlobal->moreLikeGuidelines->enable && TEST_STRING(OBEYSCODE) && cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE))
-				if (pRetVal == (uint64_t)cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLFALSE))
-						pRetVal = cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE);
-		}
+		bKnownType = true;
 
 	} // Builtin Function
-	else if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BUILTIN) == (uint64_t)((RogueObject*)function)->PyType)
-	{
+	//else if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BUILTIN) == (uint64_t)((RogueObject*)function)->PyType)
+	//{
 
-	} // Function
-	else if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.FUNCTION) == (uint64_t)((RogueObject*)function)->PyType)
+	//} // Function
+	else if (IS_FUNCTION(FUNCTION))
 	{
-		RogueObject* pFunctionName = (RogueObject*)((uint64_t*)function)[8];
+		pFunctionName = (RogueObject*)((uint64_t*)function)[8];
+		bKnownType = true;
+	}
+
+	if (pFunctionName && bKnownType)
+	{
 		cheatsGlobal->roguePython->readAttribute(pFunctionName);
+		sFunctionName = std::string(((PyVarObjectCust*)pFunctionName)->sName);
+;	}
 
 
-		PyVarObjectCust* tmp = (PyVarObjectCust*)pFunctionName;
-		std::string tmpAttName(tmp->sName);
+	// Pre Execution Hooks
+	if (cheatsGlobal->cannonFlashSuppressor->enable && TEST_STRING(PLAYFIREEFFECT))
+		return cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.NONE);
 
-		if (tmpAttName.find("damageAllowed") != std::string::npos)
+
+	if (sFunctionName.find("hitNail") != std::string::npos)
+	{
+		//printf("%f %d\n", ((RogueFloat*)*((*pStackPointer) - 1))->fValue, iOpArg);
+		static RogueFloat* tmpFloat = cheatsGlobal->roguePython->createFloat(1.875);
+		*((*pStackPointer) - 1) = (RogueObject*)tmpFloat;
+	}
+	if (sFunctionName.find("doMethod") != std::string::npos)
+	{
+		if (iOpArg == 3)
 		{
-			printf("%s  %p \n", tmp->sName, function);
+			printf("%s %s %d\n", sFunctionName.c_str(), ((PyVarObjectCust*)*((*pStackPointer) - 1))->sName, iOpArg);
+			std::string tmpStr(((PyVarObjectCust*)*((*pStackPointer) - 1))->sName);
+			if (tmpStr.find("StartFighting") != std::string::npos)
+			{
+				printf("yay");
+				return cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.NONE);
+			}
 		}
+		else
+		{ 
+			printf("%s %s %d\n", sFunctionName.c_str(), ((PyVarObjectCust*)*((*pStackPointer) - 2))->sName, iOpArg);
+			std::string tmpStr(((PyVarObjectCust*)*((*pStackPointer) - 2))->sName);
+			if (tmpStr.find("StartFighting") != std::string::npos)
+			{
+				printf("yay");
+
+				return cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.NONE);
+			}
+		}
+
+		//return cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.NONE);
+
+		//*((*pStackPointer) - 1) = (RogueObject*)0x00007FF7B7FCCD40;
+		//static RogueFloat* tmpFloat2 = cheatsGlobal->roguePython->createFloat(0);
+		//((RogueFloat*)*((*pStackPointer) - 1))->fValue = 5
 	}
 
 
-	if (!pRetVal)
-		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+	pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+	cheatsGlobal->roguePython->readType((RogueObject*)pRetVal);
 
+
+	// Post Execution Hooks
+	if (pRetVal)
+	{
+		if (cheatsGlobal->cooldownsAreCringe->enable && TEST_STRING(GETRECHARGETIME))
+			((RogueFloat*)pRetVal)->fValue = cheatsGlobal->cooldownsAreCringe->fDelay;
+
+		else if (cheatsGlobal->sniperElite->enable && TEST_STRING(GETMODIFIEDRANGE) && cheatsGlobal->sniperElite->tick())
+		{
+			if (((RogueFloat*)pRetVal)->PyType == (void*)cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.FLOAT))
+				((RogueFloat*)pRetVal)->fValue = cheatsGlobal->sniperElite->fDistance;
+		}
+		else if (cheatsGlobal->moreLikeGuidelines->enable && TEST_STRING(OBEYSCODE) && cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE))
+			if (pRetVal == (uint64_t)cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLFALSE))
+				pRetVal = cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE);
+
+
+
+	}
 
 	return pRetVal;
 }
