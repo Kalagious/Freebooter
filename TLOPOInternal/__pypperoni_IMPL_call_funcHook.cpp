@@ -7,7 +7,7 @@
 #include <fstream>
 #include "roguepython.h"
 
-#define TEST_STRING(x) cheatsGlobal->roguePython->vAttr2Str.at(cheatsGlobal->roguePython->ATTRIBUTES.x) == (uint64_t)pAttributeName
+#define TEST_STRING(x) cheatsGlobal->roguePython->vAttr2Str.at(cheatsGlobal->roguePython->ATTRIBUTES.x) == (uint64_t)pFunctionName
 
 extern Cheats* cheatsGlobal;
 
@@ -18,40 +18,59 @@ __pypperoni_IMPL_call_funcHook::tTargetPtr __pypperoni_IMPL_call_funcHook::oFunc
 uint64_t __fastcall __pypperoni_IMPL_call_funcHook::hookFunction(RogueObject*** pStackPointer, int64_t iOpArg, RogueObject* pKwargs)
 {
 	RogueObject** pfunc = (*pStackPointer) - iOpArg - 1;
-	RogueObject* method = *pfunc;
-
+	RogueObject* function = *pfunc;
+	RogueObject* pFunctionName = NULL;
 
 	uint64_t pRetVal = NULL;
 
-	cheatsGlobal->roguePython->readType(method);
+	cheatsGlobal->roguePython->readType(function);
 
-	if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.METHOD) == (uint64_t)((RogueObject*)method)->PyType)
+	// Method
+	if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.METHOD) == (uint64_t)((RogueObject*)function)->PyType)
 	{
-		RogueObject* function = (RogueObject*)((uint64_t*)method)[2];
-		RogueObject* pAttributeName = (RogueObject*)((uint64_t*)function)[8];
 
-		PyVarObjectCust* tmp = (PyVarObjectCust*)pAttributeName;
-		std::string tmpAttName(tmp->sName);
 
+
+		RogueObject* method = (RogueObject*)((uint64_t*)function)[2];
+		pFunctionName = (RogueObject*)((uint64_t*)method)[8];
+		cheatsGlobal->roguePython->readAttribute(pFunctionName);
+
+
+		//if (tmpAttName.find("doBroadside") != std::string::npos)
+		//{
+		//	static RogueFloat* tmpFloat = cheatsGlobal->roguePython->createFloat(1.6);
+		//	*((*pStackPointer) - 2) = (RogueObject*)tmpFloat; 
+		//	printf("%s  %d %p %p %p %p %p\n", tmp->sName, iOpArg, *((*pStackPointer) - 1), *((*pStackPointer) - 2), *((*pStackPointer) - 2), *((*pStackPointer) - 3), *((*pStackPointer) - 4), *((*pStackPointer) - 5));
+			
+		//}
+		//
 		
-		
-		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs);
+
+
+		// Pre Execution Hooks
+		if (cheatsGlobal->cannonFlashSuppressor->enable && TEST_STRING(PLAYFIREEFFECT))
+			return cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.NONE);
+
+
+
+		pRetVal = __pypperoni_IMPL_call_funcHook::oFunction(pStackPointer, iOpArg, pKwargs)	;
 		cheatsGlobal->roguePython->readType((RogueObject*)pRetVal);
 
-		 
-		//if (tmpAttName.find("willWeapon") != std::string::npos)
+
+		//if (tmpAttName.find("checkBroadside") != std::string::npos)
 		//{
-		//	//printf("%s  %p %p %d\n", tmp->sName, pStackPointer, pRetVal, iOpArg);
-		//	return 0x00007FF7C5CDC0E0;
+		//		static RogueFloat* tmpFloat = cheatsGlobal->roguePython->createFloat(1.6);
+		//		pRetVal = (uint64_t)tmpFloat;
+
 		//}
 
+		//if (tmpAttName.find("canAimBroadside") != std::string::npos)
+		//{
+		//	pRetVal = cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE);
 
-
-
-
-
-		
-		cheatsGlobal->roguePython->readAttribute(pAttributeName);
+		//}
+		// 
+		// Post Execution Hooks
 		if (pRetVal)
 		{
 			if (cheatsGlobal->cooldownsAreCringe->enable && TEST_STRING(GETRECHARGETIME))
@@ -67,6 +86,24 @@ uint64_t __fastcall __pypperoni_IMPL_call_funcHook::hookFunction(RogueObject*** 
 						pRetVal = cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BOOLTRUE);
 		}
 
+	} // Builtin Function
+	else if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.BUILTIN) == (uint64_t)((RogueObject*)function)->PyType)
+	{
+
+	} // Function
+	else if (cheatsGlobal->roguePython->vPyTypes.at(cheatsGlobal->roguePython->TYPES.FUNCTION) == (uint64_t)((RogueObject*)function)->PyType)
+	{
+		RogueObject* pFunctionName = (RogueObject*)((uint64_t*)function)[8];
+		cheatsGlobal->roguePython->readAttribute(pFunctionName);
+
+
+		PyVarObjectCust* tmp = (PyVarObjectCust*)pFunctionName;
+		std::string tmpAttName(tmp->sName);
+
+		if (tmpAttName.find("damageAllowed") != std::string::npos)
+		{
+			printf("%s  %p \n", tmp->sName, function);
+		}
 	}
 
 

@@ -126,6 +126,7 @@ void ScreenManager::DrawVisualCategory()
     ImGui::SetWindowSize(ImVec2((float)350, (float)700));
     ImGui::PushFont(pBodyFont);
 
+    cheatsGlobal->cannonFlashSuppressor->drawMenuEntry();
 
     ImGui::PopFont();
     ImGui::End();
@@ -169,6 +170,7 @@ void ScreenManager::DrawActive()
         cheatsGlobal->cooldownsAreCringe->drawActive();
         cheatsGlobal->sniperElite->drawActive();
         cheatsGlobal->moreLikeGuidelines->drawActive();
+        cheatsGlobal->cannonFlashSuppressor->drawActive();
 
         ImGui::PopFont();
         ImGui::End();

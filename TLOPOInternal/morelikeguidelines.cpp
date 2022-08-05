@@ -7,7 +7,7 @@ extern Cheats* cheatsGlobal;
 
 MoreLikeGuidelines::MoreLikeGuidelines(Cheats* cheatsIn)
 {
-	name = "SniperElite";
+	name = "MoreLikeGuidelines";
 	enable = false;
 	cheats = cheatsIn;
 }

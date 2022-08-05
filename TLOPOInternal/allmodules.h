@@ -8,3 +8,4 @@
 #include "cooldownsarecringe.h"
 #include "sniperelite.h"
 #include "morelikeguidelines.h"
+#include "cannonflashsuppressor.h"

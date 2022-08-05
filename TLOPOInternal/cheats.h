@@ -38,4 +38,5 @@ public:
 	CoolDownsAreCringe* cooldownsAreCringe;
 	SniperElite* sniperElite;
 	MoreLikeGuidelines* moreLikeGuidelines;
+	CannonFlashSuppressor* cannonFlashSuppressor;
 };

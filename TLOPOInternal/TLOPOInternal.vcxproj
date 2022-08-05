@@ -172,6 +172,7 @@
   <ItemGroup>
     <ClInclude Include="allclasses.h" />
     <ClInclude Include="allmodules.h" />
+    <ClInclude Include="cannonflashsuppressor.h" />
     <ClInclude Include="cooldownsarecringe.h" />
     <ClInclude Include="GeneralObject.h" />
     <ClInclude Include="ImGUI\imconfig.h" />
@@ -209,6 +210,7 @@
     <ClInclude Include="__pypperoni_IMPL_call_funcHook.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cannonflashsuppressor.cpp" />
     <ClCompile Include="cheatskeybinds.cpp" />
     <ClCompile Include="cheatsutil.cpp" />
     <ClCompile Include="cooldownsarecringe.cpp" />

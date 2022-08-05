@@ -48,6 +48,8 @@ public:
 		static const uint32_t GETRECHARGETIME = 4;
 		static const uint32_t GETMODIFIEDRANGE = 5;
 		static const uint32_t OBEYSCODE = 6;
+		static const uint32_t PLAYFIREEFFECT = 7;
+
 
 
 
@@ -62,12 +64,12 @@ public:
 		static const uint32_t BOOLTRUE = 4;
 		static const uint32_t BOOLFALSE = 5;
 		static const uint32_t NONE = 6;
+		static const uint32_t FUNCTION = 7;
 
 
-		static const uint32_t STRING = 7;
-		static const uint32_t DICT = 8;
-		static const uint32_t LIST = 9;
-		static const uint32_t FUNCTION = 10;
+		static const uint32_t STRING = 8;
+		static const uint32_t DICT = 9;
+		static const uint32_t LIST = 10;
 	
 	} TYPES;
 

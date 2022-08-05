@@ -26,11 +26,13 @@ Cheats::Cheats()
 	cooldownsAreCringe = new CoolDownsAreCringe(this);
 	sniperElite = new SniperElite(this);
 	moreLikeGuidelines = new MoreLikeGuidelines(this);
+	cannonFlashSuppressor = new CannonFlashSuppressor(this);
 
 	minigunGoBurr->enable = true;
 	cooldownsAreCringe->enable = true;
 	moreLikeGuidelines->enable = true;
 	sniperElite->enable = true;
+	turnyBoi->enable = true;
 
 
 	uninject = false;

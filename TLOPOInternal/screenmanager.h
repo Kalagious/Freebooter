@@ -15,6 +15,7 @@ public:
 
 	bool imGUIInitialized;
 	bool bShowActiveModules;
+	bool dDoRGB;
 	static bool bShowGUI;
 
 	bool initializeImGui(HDC hDc);

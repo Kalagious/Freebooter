@@ -90,6 +90,9 @@
     <ClCompile Include="morelikeguidelines.cpp">
       <Filter>Modules\Modules\Attack\morelikeguidelines</Filter>
     </ClCompile>
+    <ClCompile Include="cannonflashsuppressor.cpp">
+      <Filter>Modules\Modules\Visual</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="general.h" />
@@ -200,6 +203,9 @@
     </ClInclude>
     <ClInclude Include="morelikeguidelines.h">
       <Filter>Modules\Modules\Attack\morelikeguidelines</Filter>
+    </ClInclude>
+    <ClInclude Include="cannonflashsuppressor.h">
+      <Filter>Modules\Modules\Visual</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

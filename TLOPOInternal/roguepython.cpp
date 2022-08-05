@@ -10,10 +10,10 @@ RoguePython::RoguePython(Cheats* cheatsIn)
 void RoguePython::init()
 {
 
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 8; i++)
 		vPyTypes.push_back(0);
 
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 8; i++)
 		vAttr2Str.push_back(0);
 
 }
@@ -55,7 +55,7 @@ void RoguePython::readType(RogueObject* pValue)
 	for (int i = 0; i < vPyTypes.size(); i++)
 		if (!vPyTypes.at(i))
 			bTypesFound = false;
-	if (bTypesFound || !cheats->hookManager->bHooksInitialized)
+	if (bTypesFound || !cheats->hookManager->bHooksInitialized || !pValue)
 		return;
 
 	char* pTypeName = (char*)((uint64_t*)((uint64_t*)pValue)[1])[3];
@@ -117,6 +117,14 @@ void RoguePython::readType(RogueObject* pValue)
 			vPyTypes.at(TYPES.NONE) = (uint64_t)pValue;
 		}
 	}
+	if (vPyTypes.at(TYPES.FUNCTION) == NULL)
+	{
+		if (!strcmp(pTypeName, "function"))
+		{
+			printf(" [*] RP - Function Type Found\n");
+			vPyTypes.at(TYPES.FUNCTION) = pType;
+		}
+	}
 }
 
 
@@ -126,7 +134,7 @@ void RoguePython::readAttribute(RogueObject* pAttributeName)
 	for (int i = 0; i < vAttr2Str.size(); i++)
 		if (!vAttr2Str.at(i))
 			bStringsFound = false;
-	if (bStringsFound)
+	if (bStringsFound || !pAttributeName)
 		return;
 
 
@@ -160,4 +168,8 @@ void RoguePython::readAttribute(RogueObject* pAttributeName)
 	if (vAttr2Str.at(ATTRIBUTES.OBEYSCODE) == NULL)
 		if (tmpAttName.find("obeysPirateCode") != std::string::npos)
 			vAttr2Str.at(ATTRIBUTES.OBEYSCODE) = (uint64_t)pAttributeName;
+
+	if (vAttr2Str.at(ATTRIBUTES.PLAYFIREEFFECT) == NULL)
+		if (tmpAttName.find("playFireEffect") != std::string::npos)
+			vAttr2Str.at(ATTRIBUTES.PLAYFIREEFFECT) = (uint64_t)pAttributeName;
 }
