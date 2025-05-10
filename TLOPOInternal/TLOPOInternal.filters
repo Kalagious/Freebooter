@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Hooks">
+      <UniqueIdentifier>{bf9ea857-ed6d-4744-809b-c58b7c261fab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cheats">
+      <UniqueIdentifier>{9cdc4661-40fc-4037-bc44-5d83f3a5e04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{280c0d49-f3cf-4377-bc62-8cb5dac258ea}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="hooks.h">
+      <Filter>Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="cheats.h">
+      <Filter>Cheats</Filter>
+    </ClInclude>
+    <ClInclude Include="hookoffsets.h">
+      <Filter>Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="hookmanager.h">
+      <Filter>Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="allmodules.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="setclientviewangleshook.h">
+      <Filter>Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="general.h" />
+    <ClInclude Include="offsets.h" />
+    <ClInclude Include="module.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="hookmanager.cpp">
+      <Filter>Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="hooks.cpp">
+      <Filter>Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="setclientviewangleshook.cpp">
+      <Filter>Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="cheatskeybinds.cpp">
+      <Filter>Cheats</Filter>
+    </ClCompile>
+    <ClCompile Include="cheatsutil.cpp">
+      <Filter>Cheats</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

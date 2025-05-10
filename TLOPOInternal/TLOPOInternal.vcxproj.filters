@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="cheatskeybinds.cpp">
+      <Filter>Cheats</Filter>
+    </ClCompile>
+    <ClCompile Include="cheatsutil.cpp">
+      <Filter>Cheats</Filter>
+    </ClCompile>
+    <ClCompile Include="hookmanager.cpp">
+      <Filter>Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="hooks.cpp">
+      <Filter>Hooks</Filter>
+    </ClCompile>
+    <ClCompile Include="roguepython.cpp">
+      <Filter>RoguePython</Filter>
+    </ClCompile>
+    <ClCompile Include="fly.cpp">
+      <Filter>Modules\Modules\Movement\fly</Filter>
+    </ClCompile>
+    <ClCompile Include="minigungoburr.cpp">
+      <Filter>Modules\Modules\Attack\minigungoburr</Filter>
+    </ClCompile>
+    <ClCompile Include="turnyboi.cpp">
+      <Filter>Modules\Modules\Movement\turnyboi</Filter>
+    </ClCompile>
+    <ClCompile Include="zoooom.cpp">
+      <Filter>Modules\Modules\Movement\zoooom</Filter>
+    </ClCompile>
+    <ClCompile Include="zoooomshipedition.cpp">
+      <Filter>Modules\Modules\Movement\zoooomshipedition</Filter>
+    </ClCompile>
+    <ClCompile Include="__pypperoni_IMPL_call_funcHook.cpp">
+      <Filter>Hooks\Hooks\__pypperoni_IMPL_call_funcHook</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDict_SetItemHook.cpp">
+      <Filter>Hooks\Hooks\PyDict_SetItemHook</Filter>
+    </ClCompile>
+    <ClCompile Include="PyFunction_NewWithQualNameHook.cpp">
+      <Filter>Hooks\Hooks\PyFunction_NewWithQualNameHook</Filter>
+    </ClCompile>
+    <ClCompile Include="PyObject_SetAttrHook.cpp">
+      <Filter>Hooks\Hooks\PyObject_SetAttrHook</Filter>
+    </ClCompile>
+    <ClCompile Include="UnamedHook.cpp">
+      <Filter>Hooks\Hooks\UnamedHook</Filter>
+    </ClCompile>
+    <ClCompile Include="SwapBuffersHook.cpp">
+      <Filter>Hooks\Hooks\SwapBuffersHook</Filter>
+    </ClCompile>
+    <ClCompile Include="screenmanager.cpp">
+      <Filter>ScreenManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_demo.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_draw.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_impl_opengl2.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_impl_opengl3.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_impl_win32.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_tables.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGUI\imgui_widgets.cpp">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="screenmanager_drawfunctions.cpp">
+      <Filter>ScreenManager</Filter>
+    </ClCompile>
+    <ClCompile Include="cooldownsarecringe.cpp">
+      <Filter>Modules\Modules\General\cooldownsarecringe</Filter>
+    </ClCompile>
+    <ClCompile Include="sniperelite.cpp">
+      <Filter>Modules\Modules\Attack\sniperelite</Filter>
+    </ClCompile>
+    <ClCompile Include="morelikeguidelines.cpp">
+      <Filter>Modules\Modules\Attack\morelikeguidelines</Filter>
+    </ClCompile>
+    <ClCompile Include="cannonflashsuppressor.cpp">
+      <Filter>Modules\Modules\Visual\cannonflashsuppressor</Filter>
+    </ClCompile>
+    <ClCompile Include="infinitecannons.cpp">
+      <Filter>Modules\Modules\Attack\infinitecannons</Filter>
+    </ClCompile>
+    <ClCompile Include="noattackcooldown.cpp">
+      <Filter>Modules\Modules\Attack\noattackcooldown</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="general.h" />
+    <ClInclude Include="allmodules.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="module.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="cheats.h">
+      <Filter>Cheats</Filter>
+    </ClInclude>
+    <ClInclude Include="NextPosObject.h">
+      <Filter>ReversedClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="allclasses.h">
+      <Filter>ReversedClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ReversedClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralObject.h">
+      <Filter>ReversedClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="PyVarObject.h">
+      <Filter>ReversedClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="hookmanager.h">
+      <Filter>Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="hooks.h">
+      <Filter>Hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="roguepython.h">
+      <Filter>RoguePython</Filter>
+    </ClInclude>
+    <ClInclude Include="fly.h">
+      <Filter>Modules\Modules\Movement\fly</Filter>
+    </ClInclude>
+    <ClInclude Include="minigungoburr.h">
+      <Filter>Modules\Modules\Attack\minigungoburr</Filter>
+    </ClInclude>
+    <ClInclude Include="turnyboi.h">
+      <Filter>Modules\Modules\Movement\turnyboi</Filter>
+    </ClInclude>
+    <ClInclude Include="zoooom.h">
+      <Filter>Modules\Modules\Movement\zoooom</Filter>
+    </ClInclude>
+    <ClInclude Include="zoooomshipedition.h">
+      <Filter>Modules\Modules\Movement\zoooomshipedition</Filter>
+    </ClInclude>
+    <ClInclude Include="__pypperoni_IMPL_call_funcHook.h">
+      <Filter>Hooks\Hooks\__pypperoni_IMPL_call_funcHook</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDict_SetItemHook.h">
+      <Filter>Hooks\Hooks\PyDict_SetItemHook</Filter>
+    </ClInclude>
+    <ClInclude Include="PyFunction_NewWithQualNameHook.h">
+      <Filter>Hooks\Hooks\PyFunction_NewWithQualNameHook</Filter>
+    </ClInclude>
+    <ClInclude Include="PyObject_SetAttrHook.h">
+      <Filter>Hooks\Hooks\PyObject_SetAttrHook</Filter>
+    </ClInclude>
+    <ClInclude Include="UnamedHook.h">
+      <Filter>Hooks\Hooks\UnamedHook</Filter>
+    </ClInclude>
+    <ClInclude Include="SwapBuffersHook.h">
+      <Filter>Hooks\Hooks\SwapBuffersHook</Filter>
+    </ClInclude>
+    <ClInclude Include="screenmanager.h">
+      <Filter>ScreenManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imconfig.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_opengl2.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_opengl3.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_opengl3_loader.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_impl_win32.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imgui_internal.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_rectpack.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_textedit.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGUI\imstb_truetype.h">
+      <Filter>ScreenManager\ImGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="cooldownsarecringe.h">
+      <Filter>Modules\Modules\General\cooldownsarecringe</Filter>
+    </ClInclude>
+    <ClInclude Include="sniperelite.h">
+      <Filter>Modules\Modules\Attack\sniperelite</Filter>
+    </ClInclude>
+    <ClInclude Include="morelikeguidelines.h">
+      <Filter>Modules\Modules\Attack\morelikeguidelines</Filter>
+    </ClInclude>
+    <ClInclude Include="cannonflashsuppressor.h">
+      <Filter>Modules\Modules\Visual\cannonflashsuppressor</Filter>
+    </ClInclude>
+    <ClInclude Include="infinitecannons.h">
+      <Filter>Modules\Modules\Attack\infinitecannons</Filter>
+    </ClInclude>
+    <ClInclude Include="noattackcooldown.h">
+      <Filter>Modules\Modules\Attack\noattackcooldown</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Cheats">
+      <UniqueIdentifier>{df1068a7-906d-4ef3-815b-5e525ded4d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks">
+      <UniqueIdentifier>{6fb71066-0c63-4199-a0dd-78e45567d5f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ReversedClasses">
+      <UniqueIdentifier>{64f0b7d6-fe90-4826-b75e-e9792a65e4dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks\Hooks">
+      <UniqueIdentifier>{1cbf96f1-c666-4866-80b0-d3c27084fc83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{823a6afc-a034-4df5-8990-66114cfc5efc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules">
+      <UniqueIdentifier>{453f33e4-ec36-4f44-9cfc-7577a0b62307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RoguePython">
+      <UniqueIdentifier>{10388704-1985-462c-8dde-4df13bcfb06e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks\Hooks\__pypperoni_IMPL_call_funcHook">
+      <UniqueIdentifier>{e255f44a-932d-4fd4-83bb-9783f80d05b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks\Hooks\PyDict_SetItemHook">
+      <UniqueIdentifier>{582e9173-4f25-4e17-8707-9540bfd023eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks\Hooks\PyFunction_NewWithQualNameHook">
+      <UniqueIdentifier>{15d98ad8-731e-4b45-ac0d-270c9ef3fbba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks\Hooks\PyObject_SetAttrHook">
+      <UniqueIdentifier>{3652a5f5-fa45-4bc7-8a4c-e0806a4944ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks\Hooks\UnamedHook">
+      <UniqueIdentifier>{e62cd865-cbc9-4114-b940-29f1cb13cacc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hooks\Hooks\SwapBuffersHook">
+      <UniqueIdentifier>{6f35ecdd-5205-4a78-a658-05c5bad71c27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ScreenManager">
+      <UniqueIdentifier>{bead5cc7-0722-4a35-abf2-32876528db0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ScreenManager\ImGUI">
+      <UniqueIdentifier>{77140652-e704-4547-9ca3-d189506390d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement">
+      <UniqueIdentifier>{cf95efe5-82a4-4ee6-8a2b-71beb6153485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\General">
+      <UniqueIdentifier>{0e136758-8489-4786-8875-d5bc010df901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack">
+      <UniqueIdentifier>{0a00d028-8ea4-457e-ab04-6034a9d209a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Visual">
+      <UniqueIdentifier>{8a189aa4-b380-4d41-8b73-127d18c72462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement\zoooom">
+      <UniqueIdentifier>{51789499-4a0f-4ddf-bb65-461db3712b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement\turnyboi">
+      <UniqueIdentifier>{0d38905d-a7c0-4545-8ae7-39ad4c421aa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement\zoooomshipedition">
+      <UniqueIdentifier>{8737b3fd-e82a-4645-824c-e2753f1f89c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Movement\fly">
+      <UniqueIdentifier>{8a9a838e-4d2d-4410-86d4-0c007fbfdb00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack\minigungoburr">
+      <UniqueIdentifier>{7c9b893b-81a2-4f5b-b633-a5ef3b79adde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\General\cooldownsarecringe">
+      <UniqueIdentifier>{fa6fce52-b429-4b9b-800f-0abcb5560df1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack\sniperelite">
+      <UniqueIdentifier>{cfafd6a5-9c67-4687-9675-b3e28847f9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack\morelikeguidelines">
+      <UniqueIdentifier>{711e1278-13df-48d8-bd1f-7aa068d2d3a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Visual\cannonflashsuppressor">
+      <UniqueIdentifier>{11caaaaf-2b18-48e0-a9fd-739f5c4a6f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack\infinitecannons">
+      <UniqueIdentifier>{e95156bc-0d42-4627-9367-180664a37eb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Modules\Attack\noattackcooldown">
+      <UniqueIdentifier>{f65d1088-b997-44ff-a6fd-1a10ba30d0cb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
