@@ -1,5 +1,5 @@
 <h1>Freebooter</h1>
-<p>This is a modified client for TLOPO. I have been working on it on and off for a few years now, but recently decided to revisit the project. It includes a number of features that can be activated with an ingame gui. This is an internal trainer that hooks into pyperoni in order to hijack the python functions and variables.</p>
+<p>This is a modified client for TLOPO. I have been working on it on and off for a few years now, but recently decided to revisit the project. It includes a number of features that can be activated with an ingame gui. The TLOPO Cheats hook into pyperoni in order to hijack the python functions and variables.</p>
 
 <h2>Keybinds</h2>
 Uparrow - Open GUI</br>
