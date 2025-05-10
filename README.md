@@ -8,8 +8,4 @@ End - Uninject
 <h2>In game Menu:</h2>
 <img src='https://github.com/user-attachments/assets/e57e9532-8848-4d1a-b5e4-bf020c68a72e'/>
 
-    <iframe width="560" height="315"
-src="https://www.youtube.com/watch?v=KhO-PyGknqY" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=KhO-PyGknqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
